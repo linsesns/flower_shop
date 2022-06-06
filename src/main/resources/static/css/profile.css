@@ -1,0 +1,260 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Root Variables ===== */
+:root {
+    --grid-column-amount: 4;
+    --max-width: 1200px;
+    --max-width-2: 500px;
+    --border-radius-1: 12px;
+    --accent-clr: #e1603a;
+    --gray-clr: #8d8d8d;
+    --title-clr: #000000;
+    --text-clr: #3b3b3b;
+    --bg-lvl-1-clr: #ffffff;
+    --primary-font: sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* ===== Body Styles ===== */
+body {
+    color: var(--text-clr);
+    background-color: var(--bg-lvl-1-clr);
+    font-family: var(--primary-font);
+    -webkit-font-smoothing: antialiased;
+    font-size: clamp(14px, 10px + 1vmin, 16px);
+    line-height: 1.2;
+}
+
+/* ===== Small Common Styles ===== */
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-size: 1rem;
+    font-family: var(--primary-font);
+    color: var(--text-clr);
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+}
+
+/* ===== Section ===== */
+.section {
+    display: grid;
+    place-content: center;
+
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.section_padding-top {
+    padding-top: 50px;
+}
+
+.section_small {
+    min-height: 70vh;
+}
+
+/* ===== Content Container ===== */
+.section__content-container {
+    display: grid;
+    gap: 24px;
+    max-width: var(--max-width);
+}
+
+/* ===== Image ===== */
+.content-container__image-container {
+    display: grid;
+    place-content: center;
+}
+
+.image-container__image {
+    width: 100%;
+}
+
+/* ===== Text ===== */
+.title {
+    margin: 0 0 8px;
+    font-size: 2.5rem;
+}
+
+.price {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+    color: var(--gray-clr);
+}
+
+.description {
+    margin: 0 0 32px;
+}
+
+/* ===== Cart Button ===== */
+.cart-button {
+    color: #fff;
+    background: #000;
+    padding: 1em 2em;
+    text-transform: uppercase;
+    /* border-radius: var(--border-radius-1); */
+}
+
+/* ===== Profile Page ===== */
+.profile-container {
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: 24px;
+}
+
+.user-image-container {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    box-shadow: 0px 4px 20px 1px rgba(0, 0, 0, 0.1);
+}
+
+.user-image-container__image {
+    width: 100%;
+}
+
+/* ===== User Info ===== */
+.user-info-container {
+    display: grid;
+    gap: 12px;
+}
+
+.info-row__title {
+    font-weight: bold;
+}
+
+/* ===== Cards ===== */
+.cards-container {
+    display: grid;
+    gap: 16px;
+}
+
+.card {
+    display: grid;
+    gap: 16px;
+    max-width: 300px;
+    background: var(--bg-lvl-2-clr);
+    border-radius: var(--border-radius-1);
+    box-shadow: 0px 4px 20px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card_padding {
+    padding: 16px;
+}
+
+.info-container_padding {
+    padding: 0 16px 16px;
+}
+
+.info-container {
+    display: grid;
+    gap: 24px;
+}
+
+.card-text-container__title {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+    color: var(--title-clr);
+}
+
+.card-text-container__description {
+    color: var(--text-clr);
+}
+
+.info-container__card-price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-price {
+    font-size: 1.2rem;
+    color: var(--title-clr);
+}
+
+/* ===== Admin Section ===== */
+.form-container {
+    display: grid;
+    gap: 24px;
+}
+
+.form-container__form-title {
+    font-size: 2.5rem;
+}
+
+.form {
+    display: grid;
+    gap: 16px;
+}
+
+.input {
+    padding: 1em;
+    font-size: 1rem;
+    border: 1px solid #000;
+    border-radius: var(--border-radius-1);
+    outline: 2px solid transparent;
+    transition: outline-color 0.3s;
+}
+
+.input:focus {
+    outline-color: var(--gray-clr);
+}
+
+.submit-button {
+    margin: 24px 0 0;
+    font-weight: bold;
+    color: var(--bg-lvl-1-clr);
+    background: var(--accent-clr);
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    transition: background 0.3s;
+}
+
+.submit-button:hover,
+.submit-button:focus {
+    background: #3b3b3b;
+}
+
+/* ===== Media Queries ===== */
+@media (min-width: 769px) {
+    .section__content-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+    }
+
+    .content-container_profile {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1100px) {
+    .cards-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

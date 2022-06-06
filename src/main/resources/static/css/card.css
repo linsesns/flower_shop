@@ -1,0 +1,72 @@
+button {
+    font-size: 1rem;
+    font-family: var(--primary-font);
+    color: var(--text-clr);
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+/* ===== Section ===== */
+.section {
+    display: grid;
+    place-content: center;
+
+    min-height: 100vh;
+    padding: 16px;
+}
+
+/* ===== Content Container ===== */
+.section__content-container {
+    display: grid;
+    gap: 24px;
+    max-width: var(--max-width);
+}
+
+/* ===== Image ===== */
+.content-container__image-container {
+    display: grid;
+    place-content: center;
+}
+
+.image-container__image {
+    width: 100%;
+}
+
+/* ===== Text ===== */
+.title {
+    margin: 0 0 8px;
+    font-size: 2.5rem;
+}
+
+.price {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+    color: #8d8d8d;
+}
+
+.description {
+    margin: 0 0 32px;
+}
+
+/* ===== Cart Button ===== */
+.cart-button {
+    color: #fff;
+    background: #e1603a;
+    padding: 1em 2em;
+    text-transform: uppercase;
+    /* border-radius: var(--border-radius-1); */
+}
+
+/* ===== Media Queries ===== */
+@media (min-width: 769px) {
+    .section__content-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+    }
+}

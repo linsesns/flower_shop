@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower Shop</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}" />
+    <link
+            href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Poppins:400,600,700&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<section class="section section_padding-top">
+    <div class="section__content-container content-container content-container_profile">
+        <div class="content-container__profile-container profile-container">
+            <div
+                    class="profile-container__user-image-container user-image-container"
+            >
+                <img class="user-image-container__image" src="https://crop-circle.imageonline.co/image.png" alt="userphoto"/>
+            </div>
+            <div class="profile-container__user-info-container user-info-container">
+                <div class="user-info-container__info-row info-row">
+                    <span class="info-row__title">ID:</span>
+                    <span class="info-row__data" th:text="${id}">id</span>
+                </div>
+                <div class="user-info-container__info-row info-row">
+                    <span class="info-row__title">Почта:</span>
+                    <span class="info-row__data" th:text="${email}">email</span>
+                </div>
+                <div class="user-info-container__info-row info-row">
+                    <span class="info-row__title">Дата регистрации:</span>
+                    <span class="info-row__data" th:text="${createdAt}">createdAt</span>
+                </div>
+                <div class="user-info-container__info-row info-row">
+                    <span class="info-row__title">Роль:</span>
+                    <span class="info-row__data" th:text="${role}">role</span>
+                </div>
+            </div>
+        </div>
+        <div class="content-container__cards-container cards-container">
+            <article class="card card_padding" th:each="flower : ${flowers}">
+                <div class="card__image-container image-container">
+                    <img th:src="${flower.photoUrl}" alt="flower-photo" class="image-container__image"/>
+                </div>
+                <div class="card__info-container info-container">
+                    <div class="info-container__card-text-container card-text-container">
+                        <h3 class="card-text-container__title" th:text="${flower.name}">This is card</h3>
+                        <p class="card-text-container__description" th:text="${flower.description}">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="info-container__card-price-container">
+                        <span class="card-price" th:text="${flower.price}">$999</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+<section sec:authorize="hasAuthority('ROLE_ADMIN')" class="section section_small">
+    <div class="section__form-container form-container">
+        <h2 class="form-container__form-title">Добавить цветок</h2>
+        <form th:action="@{/flower/add}" method="post" class="form">
+            <input
+                    type="text"
+                    placeholder="Название"
+                    name="name"
+                    id="name"
+                    class="form__input input"
+            />
+            <input
+                    type="text"
+                    placeholder="Описание"
+                    name="description"
+                    id="description"
+                    class="form__input input"
+            />
+            <input
+                    type="number"
+                    placeholder="Цена"
+                    name="price"
+                    id="price"
+                    class="form__input input"
+            />
+            <input
+                    type="url"
+                    placeholder="Ссылка на фото"
+                    name="photoUrl"
+                    id="url"
+                    class="form__input input"
+            />
+            <input
+                    type="submit"
+                    value="Добавить"
+                    class="form__input input submit-button"
+            />
+        </form>
+    </div>
+</section>
+</body>
+</html>
